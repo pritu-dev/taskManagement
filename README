@@ -1,1 +1,550 @@
+# Task Management System
+
+A full-stack **Task Management System** built with **React.js, Node.js, Express.js, and MySQL**.
+The application allows users to create and manage projects, add tasks, update task status, and manage their work from a centralized dashboard.
+
+The frontend and backend are deployed online, while the MySQL database is hosted on Railway.
+
+---
+
+## 🚀 Live Demo
+
+### Frontend
+
+https://taskmanagement-6-qabt.onrender.com/login
+
+### Backend API
+
+https://taskmanagement-3-hwpi.onrender.com
+
+---
+
+## 📌 Project Overview
+
+Task Management System is a web-based application designed to simplify project and task management.
+
+Users can:
+
+* Register and login securely
+* Create projects
+* View all projects
+* Edit projects
+* Delete projects
+* View project details
+* Create tasks
+* View tasks
+* Update task status
+* Delete tasks
+* Manage tasks according to projects
+
+The application uses **JWT authentication** to protect user-specific API routes.
+
+---
+
+## ✨ Features
+
+### Authentication
+
+* User Registration
+* User Login
+* JWT Authentication
+* Protected Routes
+* Token stored in browser localStorage
+
+### Project Management
+
+* Create Project
+* View All Projects
+* View Project Details
+* Edit Project
+* Delete Project
+
+### Task Management
+
+* Create Task
+* View Tasks
+* Update Task
+* Delete Task
+* Task Status Management
+* Tasks associated with projects
+
+### Dashboard
+
+* Project overview
+* Task management
+* Project actions
+* Task actions
+* User-based data access
+
+---
+
+## 🛠️ Technologies Used
+
+### Frontend
+
+* React.js
+* JavaScript
+* Bootstrap
+* Axios
+* React Router DOM
+* Vite
+
+### Backend
+
+* Node.js
+* Express.js
+* JWT
+* MySQL2
+* CORS
+* dotenv
+
+### Database
+
+* MySQL
+* Railway MySQL
+
+### Deployment
+
+* Render — Frontend
+* Render — Backend
+* Railway — MySQL Database
+
+### Development Tools
+
+* VS Code
+* Git
+* GitHub
+* npm
+
+---
+
+## 📂 Project Structure
+
+```text
+taskManagement/
+│
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── context/
+│   │   └── ...
+│   │
+│   ├── public/
+│   ├── package.json
+│   ├── vite.config.js
+│   └── index.html
+│
+├── backend/
+│   ├── controllers/
+│   ├── routes/
+│   ├── middleware/
+│   ├── config/
+│   ├── app.js
+│   └── package.json
+│
+└── database/
+    └── taskflow_db.sql
+        schema.sql
+```
+
+---
+
+## 🔗 Application URLs
+
+### Frontend
+
+```text
+https://taskmanagement-6-qabt.onrender.com
+```
+
+### Backend
+
+```text
+https://taskmanagement-3-hwpi.onrender.com
+```
+
+### Login API
+
+```text
+POST /api/user/login
+```
+
+Full endpoint:
+
+```text
+https://taskmanagement-3-hwpi.onrender.com/api/user/login
+```
+
+### Projects API
+
+```text
+GET /api/project/getAllProjects
+```
+
+Full endpoint:
+
+```text
+https://taskmanagement-3-hwpi.onrender.com/api/project/getAllProjects
+```
+
+---
+
+## ⚙️ Environment Variables
+
+### Backend `.env`
+
+For local development:
+
+```env
+JWT_SECRET=your_jwt_secret
+
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=your_mysql_password
+DB_NAME=taskflow_db
+DB_PORT=3306
+```
+
+For the deployed backend, use your Railway MySQL public connection details:
+
+```env
+JWT_SECRET=your_jwt_secret
+
+DB_HOST=your_railway_public_host
+DB_USER=root
+DB_PASSWORD=your_railway_mysql_password
+DB_NAME=railway
+DB_PORT=your_railway_public_port
+```
+
+> Never commit `.env` files or database passwords to GitHub.
+
+---
+
+## 🗄️ Database
+
+The application uses **MySQL** as the relational database.
+
+The production database is hosted on **Railway**.
+
+Main database entities include:
+
+* Users
+* Projects
+* Tasks
+
+Database SQL file:
+
+```text
+database/taskflow_db.sql
+```
+
+This SQL file can be used to recreate/import the database structure.
+
+---
+
+## 🔐 Authentication
+
+Authentication is implemented using **JSON Web Token (JWT)**.
+
+After successful login:
+
+1. User sends email and password.
+2. Backend validates the credentials.
+3. Backend generates a JWT.
+4. Token is returned to the frontend.
+5. Frontend stores the token in `localStorage`.
+6. Protected API requests send the token in request headers.
+7. Backend middleware verifies the token.
+
+---
+
+## 🖥️ Run Project Locally
+
+### 1. Clone Repository
+
+```bash
+git clone https://github.com/pritu-dev/taskManagement.git
+```
+
+```bash
+cd taskManagement
+```
+
+---
+
+## Frontend Setup
+
+Go to the frontend folder:
+
+```bash
+cd frontend
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start development server:
+
+```bash
+npm run dev
+```
+
+Frontend will normally run on:
+
+```text
+http://localhost:5173
+```
+
+---
+
+## Backend Setup
+
+Open another terminal and go to backend:
+
+```bash
+cd backend
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start backend:
+
+```bash
+node app.js
+```
+
+For development, if nodemon is configured:
+
+```bash
+npm run dev
+```
+
+Backend will run on:
+
+```text
+http://localhost:8080
+```
+
+---
+
+## 🗃️ Import Database Locally
+
+Make sure MySQL is running.
+
+Create/select your database and import:
+
+```bash
+mysql -u root -p taskflow_db < database/taskflow_db.sql
+```
+
+Then configure:
+
+```env
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=your_mysql_password
+DB_NAME=taskflow_db
+DB_PORT=3306
+```
+
+---
+
+## 📡 API Example
+
+### User Login
+
+```http
+POST /api/user/login
+```
+
+Request body:
+
+```json
+{
+  "email": "user@example.com",
+  "password": "your_password"
+}
+```
+
+### Get Projects
+
+```http
+GET /api/project/getAllProjects
+```
+
+Protected requests require the JWT token in the request headers.
+
+Example:
+
+```text
+token: JWT_TOKEN
+```
+
+---
+
+## 🌐 Deployment
+
+### Frontend Deployment
+
+Frontend is deployed using **Render**.
+
+Build command:
+
+```bash
+npm install && npm run build
+```
+
+Start command:
+
+```bash
+npm run preview -- --host 0.0.0.0
+```
+
+Root directory:
+
+```text
+frontend
+```
+
+---
+
+### Backend Deployment
+
+Backend is deployed using **Render**.
+
+Build command:
+
+```bash
+npm install
+```
+
+Start command:
+
+```bash
+node app.js
+```
+
+Backend URL:
+
+```text
+https://taskmanagement-3-hwpi.onrender.com
+```
+
+---
+
+### Database Deployment
+
+MySQL is deployed using **Railway**.
+
+The local SQL database was exported using:
+
+```text
+taskflow_db.sql
+```
+
+and imported into the Railway MySQL database.
+
+---
+
+## 🔒 Security
+
+The following information should never be pushed to GitHub:
+
+* Database password
+* JWT secret
+* Railway credentials
+* `.env` file
+* Private API keys
+
+Add `.env` to `.gitignore`:
+
+```gitignore
+.env
+node_modules/
+dist/
+```
+
+---
+
+## 🧪 Testing
+
+The application can be tested using:
+
+* Browser
+* Postman
+* Thunder Client
+
+Example production backend:
+
+```text
+https://taskmanagement-3-hwpi.onrender.com
+```
+
+Example login endpoint:
+
+```text
+POST https://taskmanagement-3-hwpi.onrender.com/api/user/login
+```
+
+---
+
+## 📸 Screenshots
+
+Add screenshots of the application here:
+
+```text
+screenshots/
+├── login.png
+├── dashboard.png
+├── projects.png
+├── project-details.png
+└── tasks.png
+```
+
+Example:
+
+```markdown
+![Login](screenshots/login.png)
+![Dashboard](screenshots/dashboard.png)
+```
+
+---
+
+## 🎯 Future Improvements
+
+* Task priority
+* Task due dates
+* User profile
+* Project members
+* Role-based authorization
+* Search and filtering
+* Pagination
+* Email notifications
+* Task reminders
+* Better mobile responsiveness
+
+---
+
+## 👩‍💻 Author
+
+**Priti Joshi**
+
+GitHub:
+
+https://github.com/pritu-dev
+
+---
+
+## 📄 License
+
+This project is created for learning and portfolio purposes.
 

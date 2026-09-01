@@ -7,17 +7,17 @@ import { AppContext } from '../../context/AppContextProvider';
 
 const adminPass = import.meta.env.VITE_ADMINPASS;
 const adminEmail = import.meta.env.VITE_ADMINEMAIL;
-const backendUrl = import.meta.env.VITE_BACKEND_URL;
+// const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const Login = () => {
     const navigate = useNavigate();
-    const { setToken} = useContext(AppContext);
+    const { backendURL, setToken} = useContext(AppContext);
     const [email, setEmail] = useState(adminEmail);
     const [password, setPassword] = useState(adminPass);
 
     const handleOnSubmit = async () => {
         try {
-            const { data } = await axios.post(`${backendUrl}/api/user/login`, { email, password });
+            const { data } = await axios.post(`${backendURL}/api/user/login`, { email, password });
             if (data.success) {
                 toast.success(data.message);
                 setToken(data.token);

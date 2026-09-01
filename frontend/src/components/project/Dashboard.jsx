@@ -295,10 +295,6 @@ const Dashboard = () => {
                                                     {pro.name}
                                                 </h6>
 
-                                                <small className="text-muted">
-                                                    Project #{pro.id}
-                                                </small>
-
                                             </div>
 
 

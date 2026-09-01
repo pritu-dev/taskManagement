@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
-import Login from "./components/project/Login.jsx";
+import Login from "./components/user/Login.jsx";
 import Dashboard from "./components/project/Dashboard.jsx";
 import CreateProject from "./components/project/CreateProject.jsx";
 import EditProject from "./components/project/EditProject.jsx";

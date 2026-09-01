@@ -199,14 +199,12 @@ For local development:
 ```env
 JWT_SECRET=your_jwt_secret
 
-DB_HOST=localhost
+DB_HOST=HOST_NAME
 DB_USER=root
 DB_PASSWORD=your_mysql_password
 DB_NAME=taskflow_db
-DB_PORT=3306
+DB_PORT=YOUR_PORT
 ```
-
-For the deployed backend, use your Railway MySQL public connection details:
 
 ```env
 JWT_SECRET=your_jwt_secret
@@ -225,8 +223,6 @@ DB_PORT=your_railway_public_port
 ## 🗄️ Database
 
 The application uses **MySQL** as the relational database.
-
-The production database is hosted on **Railway**.
 
 Main database entities include:
 
@@ -272,8 +268,6 @@ git clone https://github.com/pritu-dev/taskManagement.git
 cd taskManagement
 ```
 
----
-
 ## Frontend Setup
 
 Go to the frontend folder:
@@ -299,8 +293,6 @@ Frontend will normally run on:
 ```text
 http://localhost:5173
 ```
-
----
 
 ## Backend Setup
 
@@ -345,18 +337,6 @@ Create/select your database and import:
 ```bash
 mysql -u root -p taskflow_db < database/taskflow_db.sql
 ```
-
-Then configure:
-
-```env
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=your_mysql_password
-DB_NAME=taskflow_db
-DB_PORT=3306
-```
-
----
 
 ## 📡 API Example
 
@@ -415,8 +395,6 @@ Root directory:
 frontend
 ```
 
----
-
 ### Backend Deployment
 
 Backend is deployed using **Render**.
@@ -455,32 +433,12 @@ and imported into the Railway MySQL database.
 
 ---
 
-## 🔒 Security
-
-The following information should never be pushed to GitHub:
-
-* Database password
-* JWT secret
-* Railway credentials
-* `.env` file
-* Private API keys
-
-Add `.env` to `.gitignore`:
-
-```gitignore
-.env
-node_modules/
-dist/
-```
-
----
-
 ## 🧪 Testing
 
 The application can be tested using:
 
 * Browser
-* Postman
+* Hoppscotch
 * Thunder Client
 
 Example production backend:
@@ -497,17 +455,6 @@ POST https://taskmanagement-3-hwpi.onrender.com/api/user/login
 
 ---
 
-## 📸 Screenshots
-
-Add screenshots of the application here:
-
-```text
-screenshots/
-├── login.png
-├── dashboard.png
-├── projects.png
-├── project-details.png
-└── tasks.png
 ```
 
 Example:
@@ -517,34 +464,11 @@ Example:
 ![Dashboard](screenshots/dashboard.png)
 ```
 
----
-
-## 🎯 Future Improvements
-
-* Task priority
-* Task due dates
-* User profile
-* Project members
-* Role-based authorization
-* Search and filtering
-* Pagination
-* Email notifications
-* Task reminders
-* Better mobile responsiveness
-
----
-
-## 👩‍💻 Author
-
-**Priti Joshi**
-
 GitHub:
 
 https://github.com/pritu-dev
 
 ---
 
-## 📄 License
 
-This project is created for learning and portfolio purposes.
 

@@ -7,7 +7,6 @@ import { AppContext } from '../../context/AppContextProvider';
 
 const adminPass = import.meta.env.VITE_ADMINPASS;
 const adminEmail = import.meta.env.VITE_ADMINEMAIL;
-// const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const Login = () => {
     const navigate = useNavigate();
@@ -30,9 +29,13 @@ const Login = () => {
         }
         catch (err) {
             toast.error(err.message);
+            console.log(err);
         }
     }
 
+    function handleOnSubmit2 ()  {
+        console.log("clicked");
+    }
     return (
 
         <div onClick={handleOnSubmit}
@@ -67,7 +70,7 @@ const Login = () => {
 
             <div>
                 <button style={{ backgroundColor: "#4F46C5" }} 
-                className="btn btn-primary"
+                className="btn btn-primary" onClick={handleOnSubmit}
                 >LogIn</button>
             </div>
         </div>

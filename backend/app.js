@@ -10,29 +10,35 @@ import projectRoutes from "./routes/projectRoutes.js";
 import taskRouter from "./routes/taskRoutes.js";
 
 // "C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe" -u root -p
+
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-export const db =await mysql2.createConnection({
+export const db = await mysql2.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
-    port: process.env.DB_PORT || 3306
+    port: Number(process.env.DB_PORT),
+
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
 
+console.log("Aiven MySQL connected successfully");
+
 app.use(express.json());
+
 app.use("/api/user",userRouter);
 app.use("/api/project", projectRoutes);
 app.use("/api/task", taskRouter);
 
-
-
 // const insertion = async () => {
 //   try {
 //     const salt = await bcrypt.genSalt(10);
-//     const hashPass = await  bcrypt.hash("admin12356", salt);
-//     const val = ["admin123456@gmail.com", hashPass];
+//     const hashPass = await  bcrypt.hash("admin123", salt);
+//     const val = ["admin123@gmail.com", hashPass];
 
 //     const [result] = await db.query(
 //     "INSERT INTO users (email, password) VALUES (?, ?)", val);
@@ -51,6 +57,10 @@ app.use("/api/task", taskRouter);
 // };
 
 // await insertion();
+
+app.get("/",(req,res) => {
+console.log("hello");
+});
 
 app.listen("8080", () => {
   console.log("Server is Started on 8080");

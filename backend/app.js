@@ -2,7 +2,7 @@ import express from "express";
 import mysql2 from "mysql2/promise";
 import "dotenv/config";
 import cors from "cors";
-const PORT = process.env.PORT || 8080;
+const PORT = 8080;
 const app = express();
 app.use(cors());
 import userRouter from "./routes/userRoutes.js";
@@ -62,6 +62,6 @@ app.get("/",(req,res) => {
 console.log("hello");
 });
 
-app.listen(PORT, "0.0.0.0", () => {
+app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
